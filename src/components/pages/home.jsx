@@ -23,7 +23,7 @@ export default function HomePage() {
             <section className="content">
                 <h2>Our Services</h2>
                 <p>We offer a wide range of services to cater to your needs.</p>
-                <button>Learn More</button>
+                <button className="btn">Learn More</button>
             </section>
 
             <footer>
