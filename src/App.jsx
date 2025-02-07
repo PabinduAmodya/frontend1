@@ -1,18 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Product from './components/procard.jsx'
+import { useState } from 'react';  
+import './App.css';
+import Product from './components/procard.jsx';  // Ensure this file exists
+import LoginPage from './components/pages/loging.jsx';
+import HomePage from './components/pages/home.jsx';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-    <Product/>
-  
+    <BrowserRouter>
+    <Routes path="/*">
+    <Route path="/" element={<HomePage/>}/>
+    <Route path="/login" element={<LoginPage/>}/>
+    <Route path="/*" element={<h1>ERROR OCCUR</h1>}/>
+
+    </Routes>
+    </BrowserRouter>
+      
     </>
-  )
+  );
 }
 
-export default App
+export default App;
