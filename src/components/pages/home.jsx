@@ -5,7 +5,7 @@ export default function HomePage() {
         <div className="text-center font-sans p-6">
             {/* Header styling */}
             <header className="bg-blue-500 text-white p-6 rounded-lg">
-                <h1 className="text-2xl m-0">Welcome to Our Website</h1>
+                <h1 className="text-amber-50">Welcome to Our Website</h1>
                 <p className="text-lg">Your one-stop solution for all services.</p>
             </header>
 
