@@ -1,17 +1,25 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 export default function AdminProductPage() {
   const [products, setProducts] = useState([]);
+  const [productsLoaded, setProductsLoaded] = useState(false);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/products").then((res) => {
-      setProducts(res.data);
-    });
-  }, []);
+    if(!productsLoaded)
+    {
+        axios.get("http://localhost:5000/api/products").then((res) => {
+            setProducts(res.data);
+            setProductsLoaded(true);
+          });
+
+    }
+    
+  }, [productsLoaded]);
 
   return (
     <div className="container mx-auto p-6">
@@ -40,7 +48,21 @@ export default function AdminProductPage() {
                 <td className="px-4 py-3 text-blue-600 font-semibold">{product.stock}</td>
                 <td className="px-4 py-3 text-sm text-gray-600 max-w-xs truncate">{product.description}</td>
                 <td className="px-4 py-3 flex justify-center gap-3">
-                  <button className="text-red-500 hover:text-red-700">
+                  <button className="text-red-500 hover:text-red-700" title="Delete" onClick={()=>{
+                    alert(product.productId)
+                    const token = localStorage.getItem("token");
+                    axios.delete(`http://localhost:5000/api/products/${product.productId}`,{
+                        headers:{
+                            Authorization: `Bearer ${token}`,
+
+                        },
+                    }).then((res)=>{
+                        console.log(res.data);
+                        toast.success("Product deleted successfully")
+                        setProductsLoaded(false);
+                    })
+
+                  }}>
                     <FaTrashAlt size={18} />
                   </button>
                   <button className="text-blue-500 hover:text-blue-700">
