@@ -4,6 +4,7 @@ import { FaBoxArchive } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoPeople } from "react-icons/io5";
 import AdminProductPAge from "./admin/adminProductPage";
+import AddProductPage from "./admin/addProduct";
 
 
 
@@ -39,11 +40,12 @@ export default function AdminHomePage() {
             </div>
             
             
-            <div className="w-[80%] h-screen bg-red-600 ">
+            <div className="w-[80%] h-screen bg-blue-200 ">
                 
                <Routes path="/*">
                     <Route path="/dashboard" element={<h1>Dashboard</h1>} />
                     <Route path="/products" element={<AdminProductPAge/>} />
+                    <Route path="/products/addProduct" element={<AddProductPage/>}/>
                     <Route path="/orders" element={<h1>Orders</h1>} />
                     <Route path="/customers" element={<h1>Cusromers</h1>} />
                     <Route path="/*" element={<h1>404 NOT FOUND</h1>} />
