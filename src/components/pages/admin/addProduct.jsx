@@ -90,6 +90,7 @@ export default function AddProductPage()
         </div>
         <button onClick={handleSubmit} type="submit" className="w-full bg-blue-500 text-white py-1.5 rounded-lg text-sm hover:bg-blue-600">Add Product</button>
       </form>
+      
     </div>
   );
 }
