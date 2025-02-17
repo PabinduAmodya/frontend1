@@ -2,13 +2,15 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import uploadMediaToSupabase from "../../../utils/mediaUpload";
+
 
 export default function AddProductPage() 
 {
   const [productId, setProductId] = useState("");
   const [productName, setProductName] = useState("");
   const [alternativeNames, setAlternativeNames] = useState("");
-  const [imageUrls, setImageUrls] = useState("");
+  const [imageFiles, setImageFiles] = useState([]);
   const [price, setPrice] = useState("");
   const [lastPrice, setLastPrice] = useState("");
   const [stock, setStock] = useState("");
@@ -18,8 +20,16 @@ export default function AddProductPage()
 
    async function handleSubmit(){
       const altNames = alternativeNames.split(",")
-      const imgUrls=imageUrls.split(",")
 
+      const promisesArray = []
+      
+      for(let i=0; i<imageFiles.length; i++){
+        promisesArray[i] =uploadMediaToSupabase(imageFiles[i])
+
+      }
+      const imgUrls = await Promise.all(promisesArray)
+
+      
       const product = {
       productId : productId,
       productName : productName,
@@ -70,7 +80,12 @@ export default function AddProductPage()
         </div>
         <div className="mb-2">
           <label className="block text-sm text-gray-700">Image URLs</label>
-          <input type="text" name="images" value={imageUrls} onChange={(e)=>{setImageUrls(e.target.value)}} className="w-full p-1.5 border rounded-lg text-sm focus:outline-none focus:ring focus:border-blue-300" />
+          <input type="file" name="images"  
+          onChange={(e)=>{
+            
+            setImageFiles(e.target.files)
+
+          }} multiple className="w-full p-1.5 border rounded-lg text-sm focus:outline-none focus:ring focus:border-blue-300" />
         </div>
         <div className="mb-2">
           <label className="block text-sm text-gray-700">Price</label>
@@ -94,7 +109,3 @@ export default function AddProductPage()
     </div>
   );
 }
-
-
-
-//pabinduamodya28299
