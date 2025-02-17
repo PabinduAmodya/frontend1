@@ -2,14 +2,22 @@ import { useState } from "react"
 
 export default function FileUploadTest(){
 
-    const[file,setFile]= useState(null)
+    const[file,setFile]= useState(null);
+    function handleUpload(){
+        if(!file){
+            alert("please select a file")
+            return;
+        }
+        console.log(file);
+    }
+
     return(
        <div>
-        <h1>File Upload test</h1>
-        <input type="file" onChange={()=>{
+        <h4>File Upload test</h4>
+        <input type="file" onChange={(e)=>{
             setFile(e.target.files[0])
         }}/>
-        <button>Upload</button>
+        <button onClick={handleUpload}>Upload</button>
        </div> 
     )
 }
