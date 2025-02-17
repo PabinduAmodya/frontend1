@@ -94,3 +94,7 @@ export default function AddProductPage()
     </div>
   );
 }
+
+
+
+//pabinduamodya28299

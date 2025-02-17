@@ -8,6 +8,7 @@ import AdminHomePage from './components/pages/adminhome.jsx';
 import SignInPage from './components/pages/signup.jsx';
 import SignUpPage from './components/pages/signup.jsx';
 import { Toaster } from 'react-hot-toast';
+import FileUploadTest from './components/pages/test.jsx';
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
     <Route path="/product" element={<Product/>}/>
     <Route path="/admin/*" element={<AdminHomePage/>}/>
     <Route path="/*" element={<HomePage/>}/>
+    <Route path="/test" element={<FileUploadTest/>}/>
+
 
     </Routes>
     </BrowserRouter>

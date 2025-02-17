@@ -23,7 +23,7 @@ export default function SignUpPage() {
                 className="w-full max-w-xs p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
-            <button className="w-full max-w-xs bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-300">
+            <button   onClick={handleSubmit} className="w-full max-w-xs bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-300">
                 Sign Up
             </button>
 
