@@ -33,9 +33,13 @@ export default function FileUploadTest(){
             cacheControl : "3600",
             upsert : false
         }).then((res)=>{
-            console.log(res)
-            
+            console.log(res)   
         })
+
+        const url2 = supabase.storage.from("images").getPublicUrl(file.name)
+            
+        console.log(url2)
+        
     }
 
     return(
