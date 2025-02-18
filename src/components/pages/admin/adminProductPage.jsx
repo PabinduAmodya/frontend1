@@ -47,8 +47,8 @@ export default function AdminProductPAge() {
               <tr key={index} className="hover:bg-gray-100">
                 <td className="px-4 py-3">{product.productId}</td>
                 <td className="px-4 py-3 font-medium text-black">{product.productName}</td>
-                <td className="px-4 py-3 text-gray-900 font-semibold">${product.price.toFixed(2)}</td>
-                <td className="px-4 py-3  text-gray-500">${product.lastPrice.toFixed(2)}</td>
+                <td className="px-4 py-3 text-gray-900 font-semibold">LKR{product.price.toFixed(2)}</td>
+                <td className="px-4 py-3  text-gray-900">LKR{product.lastPrice.toFixed(2)}</td>
                 <td className="px-4 py-3 text-gray-800 font-semibold">{product.stock}</td>
                 <td className="px-4 py-3 text-sm text-gray-700 max-w-xs truncate">{product.description}</td>
                 <td className="px-4 py-3 flex justify-center gap-3">

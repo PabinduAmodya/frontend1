@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import NotFoundPage from "./productnotFound";
+import ImageSlider from "../../imageSlider";
 
 export default function ProductOverview() {
   const params = useParams();
@@ -46,11 +47,7 @@ export default function ProductOverview() {
       
       {/* Image Section */}
       <div className="w-[40%] h-full flex items-center justify-center p-4">
-        <img
-          src={product.images[0]}
-          alt={product.productName}
-          className="w-full h-[300px] object-cover rounded-lg shadow-md"
-        />
+        <ImageSlider images={product.images}/>
       </div>
       
       {/* Product Information Section */}
