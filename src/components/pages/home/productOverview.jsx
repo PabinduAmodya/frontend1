@@ -41,18 +41,34 @@ export default function ProductOverview() {
       {status === "not-found" && <NotFoundPage />}
 
       {status === "found" && (
-        <div className="w-full h-full flex items-center justify-center">
-          <div className="w-[35%] h-full">
-            <img src={product.images[0]} className="w-full h-[300px] object-cover rounded-lg" />
-          </div>
-          <div className="w-[65%] h-full p-4">
-            <h1 className="text-3xl font-bold text-gray-800">{product.productName}</h1>
-            <p className="text-xl text-gray-600">${product.price}</p>
-            <p className="text-lg text-gray-600 line-clamp-3">{product.description}</p>
+  <div className="w-full h-full flex items-center justify-center bg-gray-50 py-8">
+    <div className="max-w-screen-lg w-full h-full flex justify-between items-center bg-white shadow-lg rounded-lg overflow-hidden">
+      
+      {/* Image Section */}
+      <div className="w-[40%] h-full flex items-center justify-center p-4">
+        <img
+          src={product.images[0]}
+          alt={product.productName}
+          className="w-full h-[300px] object-cover rounded-lg shadow-md"
+        />
+      </div>
+      
+      {/* Product Information Section */}
+      <div className="w-[60%] h-full p-6 flex flex-col justify-center text-left">
+        <h3 className="text-2xl font-semibold text-gray-800 mb-2">{product.productName}</h3>
+        <h2 className="text-xl font-medium text-gray-500 mb-4">{product.altNames.join(" | ")}</h2>
+        <p className="text-2xl font-semibold text-gray-500 mb-4 ">{
+        (product.price>product.lastPrice)&&
+        <span className="line-through text-red-500">LKR{product.price}</span>
+        }<span className="">  LKR{product.lastPrice}</span></p>
+        
 
-          </div>
-        </div>
-      )}
+        <p className="text-lg text-gray-500 line-clamp-4">{product.description}</p>
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 }
