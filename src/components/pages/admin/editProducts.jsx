@@ -7,16 +7,23 @@ import uploadMediaToSupabase from "../../../utils/mediaUpload";
 
 export default function EditProduct() 
 {
-  const [productId, setProductId] = useState("");
-  const [productName, setProductName] = useState("");
+  const location =useLocation()
+  const navigate = useNavigate()
+  const product =location.state.product
+
+  if(!product){
+    navigate("/admin/products")
+  }
+  const [productId, setProductId] = useState(product.productId);
+  const [productName, setProductName] = useState(product.productName);
   const [alternativeNames, setAlternativeNames] = useState("");
   const [imageFiles, setImageFiles] = useState([]);
-  const [price, setPrice] = useState("");
-  const [lastPrice, setLastPrice] = useState("");
-  const [stock, setStock] = useState("");
-  const [description, setDescription] = useState("");
-  const navigate = useNavigate()
-  const location =useLocation()
+  const [price, setPrice] = useState(product.price);
+  const [lastPrice, setLastPrice] = useState(product.lastPrice);
+  const [stock, setStock] = useState(product.stock);
+  const [description, setDescription] = useState(product.description);
+  
+  
 
   console.log(location)
 
@@ -71,7 +78,7 @@ export default function EditProduct()
       <form  className="max-w-md mx-auto bg-white p-3 rounded-lg shadow-md">
         <div className="mb-2">
           <label className="block text-sm text-gray-700">Product ID</label>
-          <input type="text" name="productId" value={productId} onChange={(e)=>{setProductId(e.target.value)}} className="w-full p-1.5 border rounded-lg text-sm focus:outline-none focus:ring focus:border-blue-300" required />
+          <input disabled type="text" name="productId" value={productId} onChange={(e)=>{setProductId(e.target.value)}} className="w-full p-1.5 border rounded-lg text-sm focus:outline-none focus:ring focus:border-blue-300" required />
         </div>
         <div className="mb-2">
           <label className="block text-sm text-gray-700">Product Name</label>
@@ -106,7 +113,7 @@ export default function EditProduct()
           <label className="block text-sm text-gray-700">Description</label>
           <textarea name="description" value={description} onChange={(e)=>{setDescription(e.target.value)}} className="w-full p-1.5 border rounded-lg text-sm focus:outline-none focus:ring focus:border-blue-300" required></textarea>
         </div>
-        <button onClick={handleSubmit} type="submit" className="w-full bg-blue-500 text-white py-1.5 rounded-lg text-sm hover:bg-blue-600">Add Product</button>
+        <button onClick={handleSubmit} type="submit" className="w-full bg-blue-500 text-white py-1.5 rounded-lg text-sm hover:bg-blue-600">Edit Now</button>
       </form>
       
     </div>
