@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function AdminProductPage() {
+export default function AdminProductPAge() {
   const [products, setProducts] = useState([]);
   const [productsLoaded, setProductsLoaded] = useState(false);
 
@@ -21,6 +21,8 @@ export default function AdminProductPage() {
     }
     
   }, [productsLoaded]);
+
+  const navigate = useNavigate();
 
   return (
     <div className="container mx-auto p-6">
@@ -71,7 +73,10 @@ export default function AdminProductPage() {
                   >
                     <FaTrashAlt size={18} />
                   </button>
-                  <button className="text-gray-700 hover:text-black">
+                  <button onClick={()=>{
+                    navigate("/admin/products/edit", {state :{product : product}});
+
+                  }} className="text-gray-700 hover:text-black">
                     <FaPencilAlt size={18} />
                   </button>
                 </td>

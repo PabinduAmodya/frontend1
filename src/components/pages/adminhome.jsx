@@ -1,10 +1,11 @@
 import { Link, Route, Routes } from "react-router-dom";
 import { MdDashboard } from "react-icons/md";
 import { FaBoxArchive } from "react-icons/fa6";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaPencilAlt, FaShoppingCart } from "react-icons/fa";
 import { IoPeople } from "react-icons/io5";
 import AdminProductPAge from "./admin/adminProductPage";
 import AddProductPage from "./admin/addProduct";
+import EditProduct from "./admin/editProducts";
 
 
 
@@ -31,6 +32,7 @@ export default function AdminHomePage() {
                             <Link to="/admin/orders" className="flex items-center gap-2 p-2 hover:bg-blue-600 rounded text-center w-full"><FaShoppingCart />
                             Orders</Link>
                         </li>
+                       
                         <li>
                             <Link to="/admin/customers" className="flex items-center gap-2 p-2 hover:bg-blue-600 rounded text-center w-full"><IoPeople />
                             Customers</Link>
@@ -47,7 +49,8 @@ export default function AdminHomePage() {
                     <Route path="/products" element={<AdminProductPAge/>} />
                     <Route path="/products/addProduct" element={<AddProductPage/>}/>
                     <Route path="/orders" element={<h1>Orders</h1>} />
-                    <Route path="/customers" element={<h1>Cusromers</h1>} />
+                    <Route path="/products/edit" element={<EditProduct/>} />
+                    <Route path="/customers" element={<h1>Customers</h1>} />
                     <Route path="/*" element={<h1>404 NOT FOUND</h1>} />
                </Routes>
             
