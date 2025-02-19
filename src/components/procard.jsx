@@ -1,6 +1,6 @@
 import { useState } from "react";  
 
-export default function Product() {
+export default function Product11() {
     const [count, setCount] = useState(1);
     const [price, setPrice] = useState(100);
 
