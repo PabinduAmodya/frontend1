@@ -43,7 +43,7 @@ export default function ProductOverview() {
 
       {status === "found" && (
   <div className="w-full h-full flex items-center justify-center bg-gray-50 py-8">
-    <div className="max-w-screen-lg w-full h-full flex justify-between items-center bg-white shadow-lg rounded-lg overflow-hidden">
+    <div className="max-w-screen-xl w-full h-[90vh] flex justify-between items-center bg-white shadow-lg rounded-lg overflow-hidden">
       
       {/* Image Section */}
       <div className="w-[40%] h-full flex items-center justify-center p-4">
