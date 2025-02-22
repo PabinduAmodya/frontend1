@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { FaShoppingCart } from "react-icons/fa";
 
 export default function ProductCard({ product }) {
     const [isHovered, setIsHovered] = useState(false); // ✅ Added state to track hover
@@ -28,9 +29,9 @@ export default function ProductCard({ product }) {
                         <p className="mt-2 text-xl text-gray-900">LKR {product.lastPrice}</p>
                         <p className="mt-2 text-lg line-through text-gray-600">LKR {product.price}</p>
                         {/* View More Button */}
-                        <button className="mt-4 px-4 py-2 bg-black text-white rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors">
-                            View Details
-                        </button>
+                        <button className="mt-4 px-4 py-2 bg-black text-white rounded-lg text-sm font-medium flex items-center justify-center gap-2 hover:bg-gray-700 transition-colors">
+                        <FaShoppingCart className="text-lg" />Add to Cart</button>
+
                     </div>
                 </div>
             </Link>

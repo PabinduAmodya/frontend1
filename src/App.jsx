@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AdminHomePage from './components/pages/adminhome.jsx';
 
 import { Toaster } from 'react-hot-toast';
+import Product11 from './components/procard.jsx';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
     <Route path="/" element={<HomePage/>}/>
     <Route path="/login" element={<LoginPage/>}/>
     <Route path="/product" element={<Product/>}/>
+    <Route path="/product11" element={<Product11/>}/>
     <Route path="/admin/*" element={<AdminHomePage/>}/>
     <Route path="/*" element={<HomePage/>}/>
     

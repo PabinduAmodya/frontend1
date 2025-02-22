@@ -3,6 +3,7 @@ import Header from "../header";
 import LoginPage from "./loging";
 import ProductOverview from "./home/productOverview";
 import ProductPage from "./home/ProductPage"; // Corrected import
+import Cart from "./home/cart";
 
 export default function HomePage() {
     return (
@@ -12,6 +13,8 @@ export default function HomePage() {
                 <Routes>
                     <Route path="/" element={<h1>Home Page</h1>} />
                     <Route path="/products" element={<ProductPage />} />
+                    <Route path="/cart" element={<Cart />} />
+                    
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/productInfo/:id" element={<ProductOverview />} />
                 </Routes>
