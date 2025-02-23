@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { deleteItem } from "../utils/cartFunction";
+import { FaTrashAlt } from "react-icons/fa";
+
 
 export default function CartCard(props) {
     const { productId, qty } = props;
@@ -30,9 +32,7 @@ export default function CartCard(props) {
     if (!product) {
         return <tr><td colSpan="6" className="text-center py-4">Loading...</td></tr>;
     }
-
     return (
-        
         <tr className="hover:bg-gray-100 transition-all duration-200 ease-in-out">
             <td className="flex items-center justify-center p-4">
                 <img
@@ -48,11 +48,10 @@ export default function CartCard(props) {
             <td className="text-center py-4 px-2 text-black font-bold">
                 {(product.lastPrice * qty).toFixed(2)}
             </td>
-    
-
-            
+            <td className="py-4 px-2 text-center align-middle">
+                <FaTrashAlt  className="text-black cursor-pointer inline-block" />
+            </td>
         </tr>
-
-       
     );
+    
 }

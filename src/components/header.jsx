@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
 
 export default function Header() {
     return (
@@ -10,7 +11,7 @@ export default function Header() {
                 className="cursor-pointer w-[60px] h-[60px] rounded-full absolute left-4 top-1/2 -translate-y-1/2"
             />
 
-            {/* Navigation Links with Underline Animation */}
+            {/* Navigation Links */}
             <nav className="w-full flex justify-center space-x-8 text-gray-800 font-medium text-lg">
                 <Link to="/" className="relative hover:text-gray-600 transition duration-300 
                                        after:block after:h-[2px] after:bg-gray-600 after:w-full 
@@ -37,6 +38,16 @@ export default function Header() {
                     Contact Us
                 </Link>
             </nav>
+
+            {/* Cart Button Positioned on the Right */}
+            <Link to="/cart" className="absolute right-6 top-1/2 -translate-y-1/2 group">
+                <div className="p-3 rounded-full bg-gray-200 hover:bg-gray-300 transition duration-300 flex items-center justify-center relative">
+                    <FaShoppingCart className="text-gray-700 group-hover:text-gray-900 text-2xl" />
+                    {/* <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                        3 
+                    </span> */}
+                </div>
+            </Link>
         </header>
     );
 }
