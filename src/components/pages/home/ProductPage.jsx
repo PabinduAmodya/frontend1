@@ -27,6 +27,7 @@ export default function ProductPage() {
     return (
         <div className=" w-full h-full overflow-y-scroll flex flex-wrap gap-6 justify-center">
             {
+                
                 products.map(
                     (product)=>
                         <ProductCard product={product}/>

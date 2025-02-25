@@ -6,6 +6,7 @@ export default function ProductCard({ product }) {
     const [isHovered, setIsHovered] = useState(false); // ✅ Added state to track hover
 
     return (
+        
         <div className="w-[250px] h-[450px] bg-[#f4f0ec] shadow-lg hover:shadow-xl transition-shadow duration-300">
             <Link to={`/productInfo/${product.productId}`} className="block h-full">
                 <div className="flex flex-col items-center p-0 h-full">
