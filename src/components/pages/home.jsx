@@ -11,7 +11,8 @@ export default function HomePage() {
             <Header />
             <div className="w-full h-[calc(100vh-80px)] bg-white">
                 <Routes>
-                    <Route path="/" element={<h1>Home Page</h1>} />
+                <Route path="/*" element={<h1>Home Page</h1>} />
+                    <Route path="/home" element={<h1>Home Page</h1>} />
                     <Route path="/products" element={<ProductPage />} />
                     <Route path="/cart" element={<Cart />} />
                     

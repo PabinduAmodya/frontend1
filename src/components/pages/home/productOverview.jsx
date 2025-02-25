@@ -40,54 +40,60 @@ export default function ProductOverview() {
   }
 
   return (
-    <div className="w-full h-[calc(100vh-80px)] bg-white flex items-center justify-center">
+    <div className="w-full min-h-[calc(100vh-80px)] bg-white flex items-center justify-center">
       {status === "loading" && (
         <div className="w-full h-full flex items-center justify-center">
           <div className="animate-spin rounded-full h-32 w-32 border-4 border-gray-500 border-b-amber-600"></div>
         </div>
       )}
-
+  
       {status === "not-found" && <NotFoundPage />}
-
+  
       {status === "found" && (
-  <div className="w-full h-full flex items-center justify-center bg-gray-50 py-8">
-    <div className="max-w-screen-xl w-full h-[90vh] flex justify-between items-center bg-white shadow-lg rounded-lg overflow-hidden">
-      
-      {/* Image Section */}
-      <div className="w-[40%] h-full flex items-center justify-center p-4">
-        <ImageSlider images={product.images}/>
-      </div>
-      
-      {/* Product Information Section */}
-<div className="w-[60%] h-full p-6 flex flex-col gap-4 justify-center text-left">
-    <h3 className="text-2xl font-semibold text-gray-800">{product.productName}</h3>
-
-    <h2 className="text-xl font-medium text-gray-500">{product.altNames.join(" | ")}</h2>
-
-    <p className="text-2xl font-semibold text-gray-500">
-        {product.price > product.lastPrice && (
-            <span className="line-through text-red-500">LKR {product.price}</span>
-        )}
-        <span className=""> LKR {product.lastPrice}</span>
-    </p>
-
-    <p className="text-lg text-gray-500 line-clamp-4">{product.description}</p>
-
-    {/* ✅ Ensuring Product11 aligns properly */}
-    <div className="self-start flex">
-        <Product11 />
-    </div>
-    <button onClick={onAddtoCartClick} className="mt-4 px-4 py-2 bg-black text-white rounded-lg text-sm font-medium flex items-center justify-center gap-2 hover:bg-gray-700 transition-colors">
-                            Add to Cart</button>
-    
-    
-</div>
-
-
-    </div>
-  </div>
-)}
-
+        <div className="w-full h-full flex items-center justify-center bg-gray-50 py-4 md:py-8">
+          <div className="max-w-screen-xl w-full flex flex-col md:flex-row items-center md:justify-between bg-white shadow-lg rounded-lg overflow-hidden">
+            
+            {/* Image Section */}
+            <div className="w-[100%] lg:w-[40%]  flex items-center justify-center p-4">
+              <ImageSlider images={product.images} />
+            </div>
+            
+            {/* Product Information Section */}
+            <div className="w-full md:w-[60%] p-4 md:p-6 flex flex-col gap-2 md:gap-4 text-left">
+              <h3 className=" text-lg md:text-2xl font-semibold text-gray-800">{product.productName}</h3>
+  
+              <h2 className="text-sm md:text-xl font-medium text-gray-500">
+                {product.altNames.join(" | ")}
+              </h2>
+  
+              <p className="text-lg md:text-2xl font-semibold text-gray-500">
+                {product.price > product.lastPrice && (
+                  <span className="line-through text-red-500 text-sm md:text-lg">
+                    LKR {product.price}
+                  </span>
+                )}
+                <span className="ml-1">LKR {product.lastPrice}</span>
+              </p>
+  
+              <p className="text-sm md:text-lg text-gray-500 line-clamp-4">
+                {product.description}
+              </p>
+  
+              <div className="self-start flex">
+                <Product11 />
+              </div>
+  
+              <button 
+                onClick={onAddtoCartClick} 
+                className="mt-4 px-4 py-2 bg-black text-white rounded-lg text-sm md:text-base font-medium flex items-center justify-center gap-2 hover:bg-gray-700 transition-colors"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
+  
 }
