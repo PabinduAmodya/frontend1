@@ -6,6 +6,8 @@ import { IoPeople } from "react-icons/io5";
 import AdminProductPAge from "./admin/adminProductPage";
 import AddProductPage from "./admin/addProduct";
 import EditProduct from "./admin/editProducts";
+import AdminOrdersPage from "./admin/adminOrder";
+import AdminUsersPage from "./admin/adminuser";
 
 
 
@@ -29,8 +31,8 @@ export default function AdminHomePage() {
                             Products</Link>
                         </li>
                         <li>
-                            <Link to="/admin/orders" className="flex items-center gap-2 p-2 hover:bg-blue-600 rounded text-center w-full"><FaShoppingCart />
-                            Orders</Link>
+                            <Link to="/admin/orders" className="flex items-center gap-2 p-2 hover:bg-blue-600 rounded text-center w-full"><FaShoppingCart />Orders
+                            </Link>
                         </li>
                        
                         <li>
@@ -48,9 +50,9 @@ export default function AdminHomePage() {
                     <Route path="/dashboard" element={<h1>Dashboard</h1>} />
                     <Route path="/products" element={<AdminProductPAge/>} />
                     <Route path="/products/addProduct" element={<AddProductPage/>}/>
-                    <Route path="/orders" element={<h1>Orders</h1>} />
+                    <Route path="/orders" element={<AdminOrdersPage/>} />
                     <Route path="/products/edit" element={<EditProduct/>} />
-                    <Route path="/customers" element={<h1>Customers</h1>} />
+                    <Route path="/customers" element={<AdminUsersPage/>} />
                     <Route path="/*" element={<h1>404 NOT FOUND</h1>} />
                </Routes>
             

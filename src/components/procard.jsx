@@ -8,23 +8,24 @@ import { useState } from "react";export default function Product11({ quantity, s
     }
   
     return (
-      <div className="flex flex-col items-center gap-3 p-4">
-        <div className="flex items-center gap-4 border p-2 rounded-md">
-          <button 
-            onClick={decrement} 
-            className="px-3 py-1"
-          >
-            −
-          </button>
-          <span className="text-lg font-medium">{quantity}</span>
-          <button 
-            onClick={increment} 
-            className="px-3 py-1"
-          >
-            +
-          </button>
+        <div className="flex flex-col items-center gap-3 p-4">
+          <div className="flex items-center gap-3 border border-gray-300 rounded-md p-2 shadow-sm bg-gray-50">
+            <button 
+              onClick={decrement} 
+              className="w-8 h-8 flex items-center justify-center text-xl font-semibold "
+            >
+              −
+            </button>
+            <span className="text-lg font-medium text-gray-800">{quantity}</span>
+            <button 
+              onClick={increment} 
+              className="w-8 h-8 flex items-center justify-center text-xl font-semibold "
+            >
+              +
+            </button>
+          </div>
         </div>
-      </div>
-    );
+      );
+      
   }
   

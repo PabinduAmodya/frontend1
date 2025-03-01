@@ -3,11 +3,13 @@ import { loadCart } from "../../../utils/cartFunction";
 import CartCard from "../../cartCard";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
     const [cart, setCart] = useState([]);
     const [total, setTotal] = useState(0);
     const [labelTotal, setLabelTotal] = useState(0);
+    const navigate = useNavigate();
 
     // Function to update cart and total price
     function updateCart() {
@@ -32,31 +34,13 @@ export default function Cart() {
     }, []);
 
     function onOrderCheckOutClick() {
-        const token = localStorage.getItem("token");
+        navigate("/shiping" , {
+            state : {
+               items : loadCart()
+            }
 
-        if (token == null) {
-            return;
-        }
-
-        axios
-            .post(
-                import.meta.env.VITE_BACKEND_URL + "/api/orders",
-                {
-                    orderedItems: cart,
-                    name: "Pabindu",
-                    address: "Kathaluwa west, Ahangama.",
-                    phone: "0743663828",
-                },
-                {
-                    headers: {
-                        Authorization: "Bearer " + token,
-                    },
-                }
-            )
-            .then((res) => {
-                console.log(res.data);
-                
-            });
+        });
+       
     }
 
     return (

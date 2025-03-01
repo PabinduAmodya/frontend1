@@ -19,7 +19,7 @@ export default function Header() {
 
             {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex space-x-8 text-gray-800 font-medium text-lg">
-                {["Home  ", "Products  ", "About Us  ", "Contact Us"].map((item, index) => (
+                {["Home  ", "Products  ", "About Us  ", "Contact Us" , "Orders"].map((item, index) => (
                     <Link 
                         key={index} 
                         to={`/${item.toLowerCase().replace(" ", "")}`} 
