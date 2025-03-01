@@ -53,7 +53,7 @@ export default function Header() {
 
             {/* Full-Screen Mobile Menu */}
             <div 
-                className={`fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center text-white text-2xl space-y-6 transition-transform duration-300 z-50
+                className={`fixed inset-0  bg-black bg-opacity-90 flex flex-col items-center justify-center text-white text-2xl space-y-6 transition-transform duration-300 z-50
                 ${menuOpen ? "translate-x-0" : "translate-x-full"} lg:hidden`}
             >
                 {/* Close Button */}

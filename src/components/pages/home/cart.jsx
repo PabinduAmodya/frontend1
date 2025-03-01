@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { loadCart } from "../../../utils/cartFunction";
 import CartCard from "../../cartCard";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function Cart() {
     const [cart, setCart] = useState([]);
@@ -54,6 +55,7 @@ export default function Cart() {
             )
             .then((res) => {
                 console.log(res.data);
+                
             });
     }
 
