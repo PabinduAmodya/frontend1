@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"; 
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import NotFoundPage from "./productnotFound";
 import toast from "react-hot-toast";
 import ImageSlider from "../../imageSlider";
-import Product11 from "../../procard";
-import { addToCart, clearCart } from "../../../utils/cartFunction";
+import Product11 from "../../procard"; // Quantity changer
+import { addToCart } from "../../../utils/cartFunction";
 
 export default function ProductOverview() {
   const params = useParams();
@@ -13,14 +13,13 @@ export default function ProductOverview() {
   const [product, setProduct] = useState(null);
   const [status, setStatus] = useState("loading");
 
-  useEffect(() => {
-    console.log("Fetching product:", productId);
+  // State for quantity
+  const [quantity, setQuantity] = useState(1);
 
+  useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/api/products/${productId}`)
       .then((res) => {
-        console.log("Response Data:", res.data);
-
         if (!res.data) {
           setStatus("not-found");
         } else {
@@ -28,15 +27,12 @@ export default function ProductOverview() {
           setStatus("found");
         }
       })
-      .catch((error) => {
-        console.error("Error fetching product:", error);
-        setStatus("not-found"); // Handle API error as "not-found"
-      });
+      .catch(() => setStatus("not-found"));
   }, [productId]);
 
-  function onAddtoCartClick(){
-    addToCart(product.productId,1)
-    toast.success(product.productId+"Added to cart")
+  function onAddtoCartClick() {
+    addToCart(product.productId, quantity); // Use selected quantity
+    toast.success(`${quantity} x ${product.productName} added to cart`);
   }
 
   return (
@@ -46,21 +42,21 @@ export default function ProductOverview() {
           <div className="animate-spin rounded-full h-32 w-32 border-4 border-gray-500 border-b-amber-600"></div>
         </div>
       )}
-  
+
       {status === "not-found" && <NotFoundPage />}
-  
+
       {status === "found" && (
         <div className="w-full h-full flex items-center justify-center bg-gray-50 py-4 md:py-8">
           <div className="max-w-screen-xl w-full flex flex-col md:flex-row items-center md:justify-between bg-white shadow-lg rounded-lg overflow-hidden">
             
             {/* Image Section */}
-            <div className="w-[100%] lg:w-[40%]  flex items-center justify-center p-4">
+            <div className="w-[100%] lg:w-[40%] flex items-center justify-center p-4">
               <ImageSlider images={product.images} />
             </div>
             
             {/* Product Information Section */}
             <div className="w-full md:w-[60%] p-4 md:p-6 flex flex-col gap-2 md:gap-4 text-left">
-              <h3 className=" text-lg md:text-2xl font-semibold text-gray-800">{product.productName}</h3>
+              <h3 className="text-lg md:text-2xl font-semibold text-gray-800">{product.productName}</h3>
   
               <h2 className="text-sm md:text-xl font-medium text-gray-500">
                 {product.altNames.join(" | ")}
@@ -79,9 +75,8 @@ export default function ProductOverview() {
                 {product.description}
               </p>
   
-              <div className="self-start flex">
-                <Product11 />
-              </div>
+              {/* Pass quantity state and handlers to Product11 */}
+              <Product11 quantity={quantity} setQuantity={setQuantity} />
   
               <button 
                 onClick={onAddtoCartClick} 
@@ -95,5 +90,4 @@ export default function ProductOverview() {
       )}
     </div>
   );
-  
 }
