@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";  // Import useNavigate
 import CartCard from "../../cartCard";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -12,6 +12,7 @@ export default function ShippingPage() {
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
     const location = useLocation();
+    const navigate = useNavigate();  // Initialize navigate
 
     // Update cart if it's passed via navigation state
     useEffect(() => {
