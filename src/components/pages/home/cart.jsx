@@ -70,9 +70,16 @@ export default function Cart() {
                 </tbody>
             </table>
 
-            <h1 className="text-3xl font-bold text-black">Total: LKR {labelTotal.toFixed(2)}</h1>
-            <h1 className="text-3xl font-bold text-black">Discount: LKR {(labelTotal - total).toFixed(2)}</h1>
-            <h1 className="text-3xl font-bold text-black">Grand Total: LKR {total}</h1>
+            <h1 className="text-3xl font-bold text-black">
+   Total: LKR {labelTotal ? labelTotal.toFixed(2) : "0.00"}
+</h1>
+<h1 className="text-3xl font-bold text-black">
+   Discount: LKR {labelTotal && total ? (labelTotal - total).toFixed(2) : "0.00"}
+</h1>
+<h1 className="text-3xl font-bold text-black">
+   Grand Total: LKR {total ? total.toFixed(2) : "0.00"}
+</h1>
+
 
             {cart.length > 0 && (
                 <div className="mt-6 flex justify-center">
